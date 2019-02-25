@@ -1,0 +1,29 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    name: k8s-deployments-dashboard
+  name: k8s-deployments-dashboard
+spec:
+  template:
+    metadata:
+      labels:
+        name: k8s-deployments-dashboard
+    spec:
+      volumes:
+        - name: source
+          hostPath:
+            path: $WORKSPACE_HOME/apps/k8s-deployments-dashboard
+      containers:
+        - name: k8s-deployments-dashboard
+          image: node:10.15.1-jessie
+          workingDir: /source
+          command: ["npm", "run", "start"]
+          ports:
+            - containerPort: 3000 
+              name: node-server
+              protocol: TCP
+          volumeMounts:
+            - name: source
+              mountPath: /source

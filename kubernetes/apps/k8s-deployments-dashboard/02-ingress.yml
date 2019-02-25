@@ -1,0 +1,19 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: k8s-deployments-dashboard
+spec:
+  rules:
+    - host: app.fixico.nl.d
+      http:
+        paths:
+          - backend:
+              serviceName: k8s-deployments-dashboard
+              servicePort: 80
+    - host: cluster.pietrobongiovanni.com.d
+      http:
+        paths:
+          - backend:
+              serviceName: k8s-deployments-dashboard
+              servicePort: 80
