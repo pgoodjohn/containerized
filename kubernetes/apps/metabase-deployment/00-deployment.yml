@@ -1,0 +1,29 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    name: metabase
+  name: metabase
+spec:
+  template:
+    metadata:
+      labels:
+        name: metabase
+    spec:
+      volumes:
+        - name: source
+          # hostPath:
+          #   path: "/Users/pietrobongiovanni/workspace/pietro/apps/metabase"
+      containers:
+        - name: metabase
+          image: metabase/metabase
+          workingDir: /app
+          # command: ["npm", "run", "start"]
+          ports:
+            - containerPort: 3000 
+              name: metabase-server
+              protocol: TCP
+          # volumeMounts:
+          #   - name: source
+          #     mountPath: /source

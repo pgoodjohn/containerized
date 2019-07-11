@@ -1,0 +1,13 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: metabase
+spec:
+  rules:
+    - host: metabase.pietrobongiovanni.com.d
+      http:
+        paths:
+          - backend:
+              serviceName: metabase
+              servicePort: 80
