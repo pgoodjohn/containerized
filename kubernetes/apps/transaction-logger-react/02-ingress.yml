@@ -1,0 +1,19 @@
+---
+apiVersion: networking.k8s.io/v1beta1 # for versions before 1.14 use extensions/v1beta1
+kind: Ingress
+metadata:
+  name: transactions-logger 
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  backend:
+    serviceName: default-http-backend
+    servicePort: 80
+  rules:
+  - host: transactions.pietrobongiovanni.com.d
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: transaction-logger
+          servicePort: 80
