@@ -1,8 +1,8 @@
 .PHONY: install
 
 install:
-	helm install --name test -f metabase-config.yaml stable/metabase
+	helm install --name metabase -f metabase-config.yaml stable/metabase
 
 remove:
-	helm delete test
-	helm del --purge test
+	helm delete metabase
+	helm del --purge metabase

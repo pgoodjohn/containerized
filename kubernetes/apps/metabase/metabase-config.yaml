@@ -27,11 +27,12 @@ database:
   type: mysql
   # encryptionKey: << YOUR ENCRYPTION KEY >>
   ## Only need when you use mysql / postgres
-  host: "10.0.2.2"
+  # host: "10.0.2.2"
+  host: "192.168.99.1"
   port: 3306
   dbname: metabase
-  username: root
-  password: ""
+  username: metabase
+  password: password
   ## Alternatively, use a connection URI for full configurability. Example for SSL enabled Postgres.
   # connectionURI: postgres://user:password@host:port/database?ssl=true&sslmode=require&sslfactory=org.postgresql.ssl.NonValidatingFactory"
 
@@ -50,7 +51,7 @@ emojiLogging: true
 
 service:
   name: metabase
-  type: ClusterIP
+  type: NodePort
   externalPort: 80
   internalPort: 3000
   annotations:
