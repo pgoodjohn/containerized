@@ -1,0 +1,7 @@
+dashboard:
+  enabled: true
+  domain: traefik.k8s
+kubernetes:
+  namespaces:
+    - default
+    - kube-system
