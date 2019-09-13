@@ -19,6 +19,11 @@ ENV NODE_ENV $NODE_ENV
 # but pin this version for the best stability
 RUN npm i npm@latest -g
 
+# install dependencies first, in a different location for easier app bind mounting for local development
+# due to default /opt permissions we have to create the dir with root and change perms
+RUN mkdir /source && chown node:node /source
+WORKDIR /source
+
 # the official node image provides an unprivileged user as a security best practice
 # but we have to manually enable it. We put it here so npm installs dependencies as the same
 # user who runs the app. 
