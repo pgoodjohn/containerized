@@ -28,7 +28,8 @@ database:
   # encryptionKey: << YOUR ENCRYPTION KEY >>
   ## Only need when you use mysql / postgres
   # host: "10.0.2.2"
-  host: "192.168.99.1"
+  # host: "192.168.99.1"
+  host: "192.168.178.20"
   port: 3306
   dbname: metabase
   username: metabase

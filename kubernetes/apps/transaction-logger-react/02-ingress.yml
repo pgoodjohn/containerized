@@ -5,6 +5,7 @@ metadata:
   name: transactions-logger 
   annotations:
     ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: traefik
 spec:
   backend:
     serviceName: default-http-backend

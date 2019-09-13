@@ -1,4 +1,4 @@
-FROM php:7.1.8-fpm
+FROM php:7.2-fpm
 MAINTAINER Pietro Bongiovanni "info@pietrobongiovanni.com"
 
 # Start General
@@ -10,12 +10,17 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 ## Install dependencies
 RUN apt-get update -y
 RUN apt-get -y install \
-    libpng12-dev \
+    libpng-dev \
     libjpeg-dev \
     git \
     zip \
     mysql-client \
-    libyaml-dev
+    libyaml-dev \
+    gnupg2
+
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+RUN apt-get update -y && apt-get install google-cloud-sdk -y
 
 ## Install and configure PHP extensions
 RUN docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr

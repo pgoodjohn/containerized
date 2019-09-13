@@ -21,7 +21,7 @@ spec:
           path: /Users/pietrobongiovanni/workspace/apps/transaction-logger
       containers:
       - name: transaction-logger-node
-        image: node:12.8.1-stretch-slim
+        image: pgoodjohn/node:12.9
         workingDir: /source
         command: ["npm", "run", "start"]
         ports:
