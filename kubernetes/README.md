@@ -19,6 +19,13 @@ Make sure you have the correct context selected by running:
 kubectl config use-context docker-desktop
 ```
 
+Install Helm and initialize it:
+
+```sh
+brew install kubernetes-helm
+helm init
+```
+
 ## Ingresses
 
 To be able to use ingresses, you will need to set up [trefik](https://traefik.io/). The current configuration comes from [here](https://medium.com/@thms.hmm/docker-for-mac-with-kubernetes-ingress-controller-with-traefik-e194919591bb).
